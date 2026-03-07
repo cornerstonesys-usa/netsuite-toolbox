@@ -9,7 +9,14 @@ Below is a listing of modules and their example usage.
 
 ```javascript
 
+searchAll(options, mapping);
+
+// options = { activeSearch, pageSize=1000, breakSize=25000 };
+// activeSearch = id or scriptid of a search in your instance
+// mapping = lambda which handles the result that is returned by the search
+
 // Fetch all (or up to breakSize)
+
 const results = searchAll({
     activeSearch: orderSearch,
     pageSize: 500,        // smaller page for testing
@@ -26,6 +33,11 @@ const results = searchAll({
 
 ```javascript
 
+// options = { query, customId, pageSize=1000, breakSize=25000 };
+// query = suiteql command in text form
+// customId = a unique id for the query for history purposes
+// mapping = lambda which handles the result that is returned by the query
+
 // SQL Usage
 
 const results = queryAll({
@@ -36,6 +48,11 @@ const results = queryAll({
     customer: result.values[1],
     amount: parseFloat(result.values[2]) || 0
 });
+
+// options = { activeQuery, customId, pageSize=1000, breakSize=25000 };
+// activeQuery = id or script id of an analytics dataset
+// customId = a unique id for the query for history purposes
+// mapping = lambda which handles the result that is returned by the query
 
 // Analytics Query Usage
 
